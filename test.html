@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斗兽棋测试</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        #gameBoard { border: 1px solid #ccc; margin: 20px 0; }
+        #debug { margin-top: 20px; padding: 10px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>斗兽棋测试</h1>
+    <div>
+        <button onclick="testGame()">测试游戏初始化</button>
+        <button onclick="testRender()">测试渲染</button>
+    </div>
+    <div id="gameBoard">
+        <canvas id="chessCanvas" width="600" height="700"></canvas>
+    </div>
+    <div id="debug">
+        <div>调试信息：</div>
+        <div id="debugInfo"></div>
+    </div>
+
+    <script src="client/js/gameLogic.js"></script>
+    <script src="client/js/gameRenderer.js"></script>
+    <script>
+        let game, renderer;
+        
+        function log(message) {
+            document.getElementById('debugInfo').innerHTML += '<br>' + message;
+            console.log(message);
+        }
+        
+        function testGame() {
+            try {
+                log('创建游戏实例...');
+                game = new AnimalChess();
+                log('游戏实例创建成功');
+                
+                log('棋盘初始化检查...');
+                log('棋盘尺寸: ' + game.board.length + 'x' + game.board[0].length);
+                
+                let pieceCount = 0;
+                for (let row = 0; row < 9; row++) {
+                    for (let col = 0; col < 7; col++) {
+                        if (game.board[row][col].piece) {
+                            pieceCount++;
+                        }
+                    }
+                }
+                log('棋子数量: ' + pieceCount);
+                
+                log('当前玩家: ' + game.currentPlayer);
+                log('游戏状态: ' + game.gameState);
+                
+            } catch (error) {
+                log('错误: ' + error.message);
+                console.error(error);
+            }
+        }
+        
+        function testRender() {
+            try {
+                if (!game) {
+                    log('请先测试游戏初始化');
+                    return;
+                }
+                
+                log('创建渲染器...');
+                const canvas = document.getElementById('chessCanvas');
+                renderer = new GameRenderer(canvas, game);
+                log('渲染器创建成功');
+                
+                log('开始渲染...');
+                renderer.render();
+                log('渲染完成');
+                
+                log('Canvas尺寸: ' + canvas.width + 'x' + canvas.height);
+                log('Cell尺寸: ' + renderer.cellSize);
+                
+            } catch (error) {
+                log('错误: ' + error.message);
+                console.error(error);
+            }
+        }
+        
+        window.onload = function() {
+            log('页面加载完成');
+            testGame();
+            testRender();
+        };
+    </script>
+</body>
+</html>
