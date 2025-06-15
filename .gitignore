@@ -1,0 +1,10 @@
+# 依赖目录
+node_modules/
+
+# 操作系统文件
+.DS_Store
+
+# 日志文件
+server.log
+.claude/
+test.html

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斗兽棋 - Animal Chess</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="theme-color" content="#8B4513">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>斗兽棋</h1>
+            <div class="game-controls">
+                <button id="singlePlayerBtn" class="btn">单人游戏</button>
+                <button id="multiPlayerBtn" class="btn">联机游戏</button>
+                <button id="restartBtn" class="btn">重新开始</button>
+            </div>
+        </header>
+
+        <main>
+            <div id="gameStatus" class="status-bar">
+                <span id="currentPlayer">红方回合</span>
+                <span id="gameMode">单人模式</span>
+                <span id="connectionStatus"></span>
+            </div>
+
+            <div id="gameBoard">
+                <canvas id="chessCanvas" width="600" height="700"></canvas>
+            </div>
+
+            <div id="gameInfo">
+                <div class="player-info">
+                    <div class="player red">
+                        <h3>红方</h3>
+                        <div class="captured-pieces" id="redCaptured"></div>
+                    </div>
+                    <div class="player blue">
+                        <h3>蓝方</h3>
+                        <div class="captured-pieces" id="blueCaptured"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="modalTitle"></h2>
+                <p id="modalMessage"></p>
+                <div class="modal-buttons">
+                    <button id="modalConfirm" class="btn">确定</button>
+                    <button id="modalCancel" class="btn">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/gameLogic.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/multiplayer.js"></script>
+    <script src="js/gameRenderer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
