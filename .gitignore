@@ -11,3 +11,12 @@ server.log
 /dist
 /.vite
 /node_modules/
+# 构建产物
+build/
+
+# IDE & Editor 配置
+.vscode/
+
+# 通用日志文件
+*.log
+.kilocode/
