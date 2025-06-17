@@ -2,12 +2,14 @@
   "name": "animal-chess",
   "version": "1.0.0",
   "description": "斗兽棋网页游戏 - 支持单人和联机模式",
-  "main": "server/src/server.js",
+  "main": "server/src/index.js",
   "scripts": {
-    "start": "node server/src/server.js",
-    "dev": "node server/src/server.js",
+    "start": "node server/src/index.js",
+    "dev": "vite",
     "client": "cd client && python3 -m http.server 8080",
-    "serve": "npx http-server client -p 8080 -c-1"
+    "serve": "npx http-server client -p 8080 -c-1",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "keywords": [
     "game",
@@ -19,11 +21,18 @@
   "author": "您的名字",
   "license": "MIT",
   "dependencies": {
-    "ws": "^8.14.2",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "ws": "^8.14.2"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.4.1",
+    "http-server": "^14.1.1",
+    "prettier": "^3.5.3",
+    "vite": "^6.3.5"
   }
 }

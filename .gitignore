@@ -7,3 +7,7 @@ node_modules/
 # 日志文件
 server.log
 .claude/
+# Vite
+/dist
+/.vite
+/node_modules/

@@ -1,4 +1,4 @@
-export default class AnimalChess {
+class AnimalChess {
   constructor(emitter) {
     this.emitter = emitter;
     this.currentPlayer = 'red';
@@ -165,7 +165,8 @@ export default class AnimalChess {
       [0, 1],
     ];
 
-    for (const [dr, dc] of directions) {
+    for (let i = 0; i < directions.length; i += 1) {
+      const [dr, dc] = directions[i];
       let newRow = row + dr;
       let newCol = col + dc;
 
@@ -454,3 +455,5 @@ export default class AnimalChess {
     };
   }
 }
+
+export default AnimalChess;

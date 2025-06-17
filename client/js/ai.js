@@ -1,4 +1,4 @@
-export default class AnimalChessAI {
+class AnimalChessAI {
   constructor(emitter, difficulty = 'medium') {
     this.emitter = emitter;
     this.difficulty = difficulty;
@@ -127,7 +127,7 @@ export default class AnimalChessAI {
     let bestMove = null;
     let bestScore = -Infinity;
 
-    for (const move of moves) {
+    moves.forEach((move) => {
       let score = 0;
       const { from, to } = move;
 
@@ -160,7 +160,7 @@ export default class AnimalChessAI {
         bestScore = score;
         bestMove = move;
       }
-    }
+    });
 
     return bestMove;
   }
@@ -196,7 +196,8 @@ export default class AnimalChessAI {
       [0, 1],
     ];
 
-    for (const [dr, dc] of directions) {
+    for (let i = 0; i < directions.length; i += 1) {
+      const [dr, dc] = directions[i];
       let newRow = row + dr;
       let newCol = col + dc;
 
@@ -297,3 +298,5 @@ export default class AnimalChessAI {
     this.difficulty = difficulty;
   }
 }
+
+export default AnimalChessAI;

@@ -1,4 +1,4 @@
-export default class GameRenderer {
+class GameRenderer {
   constructor(canvas, emitter) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
@@ -176,6 +176,8 @@ export default class GameRenderer {
               x + this.cellSize / 2,
               y + this.cellSize / 2
             );
+            break;
+          default:
             break;
         }
       }
@@ -384,3 +386,5 @@ export default class GameRenderer {
     modal.classList.add('hidden');
   }
 }
+
+export default GameRenderer;
